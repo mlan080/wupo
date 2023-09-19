@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <p>Want to book a practioner? Or join as a practioner? Get in touch with us here</p>
+
+    <%= form_for @contact do |form| %>
+
+    <% if @contact.errors.any? %>
+        <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
+            <div class="font-bold text-rose-700 text-sm pb-4"><%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved:</div>
+
+            <ul class="pb-0 mb-0">
+                <% @contact.errors.each do |error| %>
+                    <li class="text-rose-600 pl-4 text-sm"><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <style>
+    .rounded-button {
+        border-radius: 10px; /* Adjust the value to control the roundness */
+        background-color: #fa6; /* Set the button background color to orange */
+        color: white; /* Set the text color to white */
+        padding: 10px 20px; /* Add padding for spacing (vertical padding, horizontal padding) */
+        border: none; /* Remove the default button border */
+        cursor: pointer; /* Add a pointer cursor on hover */
+    }
+    
+    div[style*="margin-top: 10px;"] {
+      margin-top: 20px;
+}
+    </style>
+
+    <div class="field mb-6">
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name, class: "rounded-input" %>
+    </div>
+
+    <div class="field mb-6">
+        <%= form.label :email, style: "display: block" %>
+        <%= form.email_field :email, class: "rounded-input" %>
+    </div>
+
+    <div class="field">
+        <%= form.label :message, style: "display: block" %>
+        <%= form.text_area :message, class: "rounded-input" %>
+    </div>
+
+    <div class="actions flex justify-end">
+        <%= form.submit "Send Message" , class: "rounded-button" %>
+    </div>
+    <% end %>
+</div>
+

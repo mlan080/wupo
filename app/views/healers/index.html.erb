@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BIPOC Healers</title>
+  <style>
+    .container-fluid 
+    {
+      padding: 60px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      padding-left: 50px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .search-input {
+      margin-left: 50px;
+      padding-left: 50px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Search input -->
+  <input type="text" id="searchInput" class="search-input" placeholder="Keyword search">
+
+  <!-- BIPOC Healers -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Service</th>
+        <th>Description</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @healers.each do |healer| %>
+        <tr>
+          <td><%= healer.name %></td>
+          <td><%= healer.service %></td>
+          <td><%= healer.description %></td>
+          <td><%= healer.contact %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- JavaScript for table filtering -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const input = document.getElementById('searchInput');
+      input.addEventListener('input', function() {
+        const filter = input.value.toLowerCase();
+        const table = document.querySelector('table');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+          const row = rows[i];
+          const columns = row.getElementsByTagName('td');
+          let found = false;
+
+          for (let j = 0; j < columns.length; j++) {
+            const column = columns[j];
+            if (column) {
+              const text = column.textContent.toLowerCase();
+              if (text.indexOf(filter) > -1) {
+                found = true;
+                break;
+              }
+            }
+          }
+
+          if (found) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

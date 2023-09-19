@@ -1,0 +1,19 @@
+<h1>Add a new healer</h1>
+
+<%= render "form", healer: @healer %>
+<br>
+
+<%= form_with(model: Healer.new, url: 'healers_path', local: true, multipart: true) do |form| %>
+  <div class="field">
+    <%= form.label :csv_file, 'Upload CSV File' %>
+    <%= form.file_field :csv_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Upload' %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Back to healers", healers_path %>
+</div>

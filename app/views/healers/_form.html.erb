@@ -1,0 +1,52 @@
+<%= form_with(model: healer) do |form| %>
+  <% if healer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(healer.errors.count, "error") %> prohibited this healer from being saved:</h2>
+
+      <ul>
+        <% healer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <style> 
+  .rounded-button {
+      border-radius: 10px; /* Adjust the value to control the roundness */
+      background-color: #fa6; /* Set the button background color to orange */
+      color: white; /* Set the text color to white */
+      padding: 10px 20px; /* Add padding for spacing (vertical padding, horizontal padding) */
+      border: none; /* Remove the default button border */
+      cursor: pointer; /* Add a pointer cursor on hover */
+  }
+
+  div[style*="margin-top: 10px;"] {
+    margin-top: 20px;
+
+  </style>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: "rounded-input" %>
+  </div>
+
+  <div>
+  <%= form.label :service, style: "display: block" %>
+  <%= form.text_field :service, class: "rounded-input"%>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description, class: "rounded-input" %>
+  </div>
+
+  <div>
+    <%= form.label :contact, style: "display: block" %>
+    <%= form.text_field :contact, class: "rounded-input", placeholder: "instagram or website" %>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= form.submit "Submit", class: "rounded-button" %>
+  </div>
+<% end %>

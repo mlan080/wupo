@@ -1,0 +1,2 @@
+class Healer < ApplicationRecord
+end

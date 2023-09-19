@@ -1,0 +1,5 @@
+/* Override the background color of the .navbar class with orange */
+.navbar {
+    background-color: #fa6 !important; /* Use !important to ensure the override */
+  }
+  
