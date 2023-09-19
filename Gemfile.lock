@@ -90,6 +90,10 @@ GEM
       reline (>= 0.3.1)
     dockerfile-rails (1.5.9)
       rails
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -241,6 +245,7 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.5)
+  dotenv-rails
   importmap-rails
   jbuilder
   mail_form (~> 1.9)
