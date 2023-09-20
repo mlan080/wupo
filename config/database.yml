@@ -17,5 +17,6 @@ test:
 production:
   <<: *default
   database: wupo
+  host: https://wupo-db.fly.dev
   username: mandylan
   password: pagewood

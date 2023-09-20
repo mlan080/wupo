@@ -1,10 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <style>
+  .container-fluid {
+  display: flex;
+  padding: 60px;
+  }
 
-<%= render @healer %>
+img {
+  max-width: 90% ;
+  max-height:100% ;
+}
 
-<div>
+.text {
+  max-width: 50% ;
+  font-size: 16px;
+}
+  </style>
+  <body>
+    <div class="container-fluid">
+      <div class="image">
+        <%= image_tag("healers/mandy.jpg") %> 
+        </div>
+      <div class="text">
+      <h1> Mandy Lan </h1>
+        <p> 你好, kia ora, </p>
+        This healer is Mandy Lan, a BIPOCQT+ previously the only female presenting software in a team of 30, started her own yoga classes within the company. She’s also led emergency relief teams for BIPOC refugees and co-created performance activism pieces in the Humboldt forum and ZK/U. </p>
+        </p>
+      <%= render @healer %>
   <%= link_to "Edit this healer", edit_healer_path(@healer) %> |
   <%= link_to "Back to healers", healers_path %>
-
   <%= button_to "Destroy this healer", @healer, method: :delete %>
-</div>
+  </div>
+  </div>
+  </body>
+</html>

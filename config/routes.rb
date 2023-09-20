@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'healers', to: 'healers#index'
   get 'pages/about', to: 'pages#about'
-  resources :healers
+  resources :healers, only: [:show]
   root "pages#homepage"
   resources :ideas
 

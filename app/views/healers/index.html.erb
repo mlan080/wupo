@@ -50,7 +50,7 @@
     <tbody>
       <% @healers.each do |healer| %>
         <tr>
-          <td><%= healer.name %></td>
+          <td><%= link_to healer.name, healer_path(healer) %> | <%= link_to "Show this idea", @healer %></td>
           <td><%= healer.service %></td>
           <td><%= healer.description %></td>
           <td><%= healer.contact %></td>

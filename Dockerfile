@@ -14,17 +14,16 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development:test" \
     BUNDLE_DEPLOYMENT="1"
 
+# Update and install libraries
+RUN apt update -qq && \
+    apt install --no-install-recommends -y build-essential pkg-config libpq-dev
+
 # Update gems and bundler
 RUN gem update --system --no-document && \
     gem install -N bundler
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
-
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential pkg-config
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./

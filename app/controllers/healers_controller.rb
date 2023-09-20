@@ -12,6 +12,7 @@ class HealersController < ApplicationController
 
   # GET /healers/1 or /healers/1.json
   def show
+    @healer = Healer.find_by(name: params[:name])
   end
 
   # GET /healers/new
