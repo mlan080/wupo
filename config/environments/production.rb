@@ -91,7 +91,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.hosts << "0.0.0.0"
   config.hosts << "https://wupo.fly.dev/"
-  config.port = 3000
+
 end
