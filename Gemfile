@@ -82,6 +82,9 @@ gem "sentry-ruby", "~> 5.11"
 
 gem "sentry-rails", "~> 5.11"
 
-gem 'pg', '~> 1.5', '>= 1.5.4'
 gem 'dotenv-rails'
+
+group :production do
+  gem 'pg'
+end
 

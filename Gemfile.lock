@@ -249,7 +249,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mail_form (~> 1.9)
-  pg (~> 1.5, >= 1.5.4)
+  pg
   puma (~> 5.0)
   rails (~> 7.0.8)
   redis (~> 5.0)
