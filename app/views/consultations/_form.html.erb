@@ -1,0 +1,69 @@
+
+<div class="container-fluid">
+<%= form_with(model: consultation) do |form| %>
+  <% if consultation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
+
+      <ul>
+        <% consultation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <style>
+
+  .container-fluid {
+    padding:60px;
+}
+  .rounded-button {
+      border-radius: 10px; /* Adjust the value to control the roundness */
+      background-color: #fa6; /* Set the button background color to orange */
+      color: white; /* Set the text color to white */
+      padding: 10px 20px; /* Add padding for spacing (vertical padding, horizontal padding) */
+      border: none; /* Remove the default button border */
+      cursor: pointer; /* Add a pointer cursor on hover */
+  }
+  
+  div[style*="margin-top: 10px;"] {
+      padding: 60px;
+  }
+  </style>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :text, style: "display: block" %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div>
+    <%= form.label :start_time, style: "display: block" %>
+    <%= form.datetime_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :end_time, style: "display: block" %>
+    <%= form.datetime_field :end_time %>
+  </div>
+
+  <div>
+    <%= form.submit "Send Message" , class: "rounded-button" %>
+  </div>
+<% end %>
+</div>

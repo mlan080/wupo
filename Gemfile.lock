@@ -201,6 +201,8 @@ GEM
       sentry-ruby (~> 5.11.0)
     sentry-ruby (5.11.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -256,6 +258,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails (~> 5.11)
   sentry-ruby (~> 5.11)
+  simple_calendar (~> 2.4)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails

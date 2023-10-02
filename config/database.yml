@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: wupo
+  database: wupo-db
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: wupo
-  host: https://wupo-db.fly.dev
+  database: wupo-db
+  host: wupo-db.fly.dev
   username: mandylan
   password: pagewood

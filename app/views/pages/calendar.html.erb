@@ -1,0 +1,44 @@
+<style>
+    .container-fluid {
+        padding: 40px;
+    }
+  .day {
+    margin: 10px; /* Adjust this value as needed */
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
+
+  .day > .card-header {
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 0;
+    margin-top: 10px;
+  }
+
+  .card-title {
+    font-size: 14px; /* Adjust this value as needed */
+    white-space: normal;
+  }
+</style>
+
+<div class="container-fluid">
+  <div class="calendar-container">
+  <%= link_to "Create a New Event", new_consultation_path, style: "margin-top: 20px;" %>
+
+    <%= month_calendar(events: @consultations) do |date, consultations| %>
+      <div class="day">
+        <%= date.day %>
+        <% consultations.each do |consultation| %>
+          <div class="card-header">
+            <div class="card-title">
+              <%= link_to "#{consultation.title} #{consultation.location}", consultation %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
