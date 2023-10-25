@@ -38,6 +38,11 @@
   </div>
 
   <div>
+    <%= form.label :practioner, style: "display: block" %>
+    <%= form.text_field :practioner %>
+  </div>
+
+  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
@@ -51,6 +56,11 @@
     <%= form.label :text, style: "display: block" %>
     <%= form.text_field :text %>
   </div>
+  
+  <div>
+    <%= form.label :link, style: "display: block" %>
+    <%= form.text_field :link %>
+  </div>
 
   <div>
     <%= form.label :start_time, style: "display: block" %>
@@ -63,7 +73,7 @@
   </div>
 
   <div>
-    <%= form.submit "Send Message" , class: "rounded-button" %>
+    <%= form.submit "Submit to calendar" , class: "rounded-button" %>
   </div>
 <% end %>
 </div>

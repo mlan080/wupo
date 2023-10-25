@@ -34,7 +34,7 @@
         <% consultations.each do |consultation| %>
           <div class="card-header">
             <div class="card-title">
-              <%= link_to "#{consultation.title} #{consultation.location}", consultation %>
+            <%= link_to "#{consultation.start_time.strftime('%H:%M')} #{consultation.title} with #{consultation.practioner} #{consultation.link}", consultation %>
             </div>
           </div>
         <% end %>
