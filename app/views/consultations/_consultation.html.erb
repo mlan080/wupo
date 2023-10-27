@@ -15,7 +15,7 @@
   </p>
 
   <p>
-    <strong>Text:</strong>
+    <strong>Description:</strong>
     <%= consultation.text %>
   </p>
 
@@ -24,14 +24,14 @@
   <%= consultation.link %>
   </p>
 
+  <% if consultation.start_time.present? && consultation.end_time.present? %>
   <p>
-    <strong>Start time:</strong>
-    <%= consultation.start_time %>
+    <strong>Start Time:</strong> <%= consultation.start_time.strftime('%H:%M') %>
+    <br>
+    <strong>End Time:</strong> <%= consultation.end_time.strftime('%H:%M') %>
   </p>
-
-  <p>
-    <strong>End time:</strong>
-    <%= consultation.end_time %>
-  </p>
+<% else %>
+  <p>Start and end times are not provided.</p>
+<% end %>
 
 </div>

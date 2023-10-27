@@ -1,5 +1,5 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: %i[ show edit update destroy ]
+    before_action :set_consultation, only: %i[ show edit update destroy url_link ]
 
   # GET /consultations or /consultations.json
   def index
@@ -30,7 +30,11 @@ class ConsultationsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @consultation.errors, status: :unprocessable_entity }
-      end
+      end    
+    end
+    def group_message
+      HTTParty.post("https://api.telegram.org/bot6531241514:AAGEftmJmA11c1AovrptarY-UMnvRe-1QTU/sendMessage?chat_id=-1001514290548&text=hello")
+      redirect_to root_path, notice: "success"
     end
   end
 
@@ -55,7 +59,17 @@ class ConsultationsController < ApplicationController
       format.html { redirect_to consultations_url, notice: "Consultation was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
+
+  def url_link
+    @consultation = Consultation.find(params[:id])
+    redirect_to @consultation.formatted_url_link, allow_other_host: true
+end
+
+def formatted_url_link
+  @consultation.link.starts_with?('http://', 'https://') ? link : "http://#{link}"
+end
+
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
