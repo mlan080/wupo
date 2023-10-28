@@ -1,5 +1,5 @@
 class ConsultationsController < ApplicationController
-    before_action :set_consultation, only: %i[ show edit update destroy url_link ]
+    before_action :set_consultation, only: %i[ show edit update destroy url_link, group_message ]
 
   # GET /consultations or /consultations.json
   def index
@@ -21,7 +21,7 @@ class ConsultationsController < ApplicationController
 
   # POST /consultations or /consultations.json
   def create
-    @consultation = Consultation.new(consultation_params)
+      @consultation = Consultation.new(consultation_params)
 
     respond_to do |format|
       if @consultation.save
@@ -32,11 +32,24 @@ class ConsultationsController < ApplicationController
         format.json { render json: @consultation.errors, status: :unprocessable_entity }
       end    
     end
-    def group_message
-      HTTParty.post("https://api.telegram.org/bot6531241514:AAGEftmJmA11c1AovrptarY-UMnvRe-1QTU/sendMessage?chat_id=-1001514290548&text=hello")
-      redirect_to root_path, notice: "success"
-    end
   end
+
+  def group_message
+    chat_id=-1001514290548
+    text="#{@consultation.title} by #{@consultation.healer} at #{@consultation.start_time} book here: #{@consultation.link}"
+      
+    HTTParty.post("https://api.telegram.org/bot6531241514:AAGEftmJmA11c1AovrptarY-UMnvRe-1QTU/sendMessage", 
+    headers: {
+        'Content-Type' => 'application/json'
+      },
+      body: {
+        chat_id: chat_id, 
+        text: text 
+    }.to_json
+    )
+    render plain: '', status: :no_content
+  end
+  
 
   # PATCH/PUT /consultations/1 or /consultations/1.json
   def update
